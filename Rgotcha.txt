@@ -11,3 +11,25 @@ library(ggplot2)
 ?qplot()
 
 #new comment
+
+#vecors are of same data type, you cannot mix them
+
+c()
+seq()
+rep()
+is.Numeric()
+rnorm()
+
+# if you - inside the [] ,that index is excluded
+
+#how to create matrices
+
+matrix()
+rbind() #bind by row
+cbind() #bind by col
+
+#sample to create matrix
+
+my.data<- 1:20
+B <- matrix(my.data,4,5,byrow =T)
+B[2,5]
