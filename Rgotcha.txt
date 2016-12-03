@@ -1,0 +1,11 @@
+
+# to install packages in R
+install.packages("ggplot2")
+
+#to activate package
+
+library(ggplot2)
+
+#to get help type ?
+
+?qplot()
