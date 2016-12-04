@@ -62,3 +62,42 @@ myPlot <- function(data,rows=1:10){
   legend("bottomleft",inset=0.01,pch=15:18, col=c(1:4,6),legend=Players[rows])
 
 }
+
+
+#method  :1 Read the file manually
+
+stats <- read.csv(file.choose())
+stats
+
+
+setwd() and getwd () to get the current working directory and to switch
+
+#Imported so many rows using nrow and ncol
+nrow(stats)
+ncol(stats)
+
+# top 6 row from the file
+head(stats)
+
+#bottom 6 of the file
+tail(stats)
+
+
+#str() to get the structre of the data
+#runif() random  variables distrubted uniformly
+#rnorm()
+
+#summary vs stats
+$ sign is used to extra data from data frame
+stats$Internet.users[22]
+vs
+stats[3,3]
+to get the common levels inside the column
+levels(stats$Income.Group)
+
+
+# to add a column
+dataname$mynewcol <- vector or data frame
+
+# To get rid of column
+stats$xyz <- NULL
