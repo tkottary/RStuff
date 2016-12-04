@@ -33,3 +33,22 @@ cbind() #bind by col
 my.data<- 1:20
 B <- matrix(my.data,4,5,byrow =T)
 B[2,5]
+
+t() # to transpose a matrix
+
+make sure to keep same legengs, color and pch for legends()
+
+matplot(t(FieldGoals/Games),type="b", pch=15:18, col=c(1:4,6))
+legend("bottomleft",inset= 0.01,legend= Players, col=c(1:4,6),pch=15:18,horiz =F)
+
+
+pass drop=F inside[] to convert it matrix subset to matrix always  other wise you might end up getting a vector
+
+Games[1:3,6:10]
+Games[c(1,10),c("2008","2011")]
+Games[,c(6:10)]
+Games[1,,drop=T]
+Games[1,5,drop=F]
+Games[1,2]
+is.matrix(Games[1,2,drop=F])
+is.vector(Games[1,2,drop=F])
