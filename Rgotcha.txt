@@ -52,3 +52,13 @@ Games[1,5,drop=F]
 Games[1,2]
 is.matrix(Games[1,2,drop=F])
 is.vector(Games[1,2,drop=F])
+
+
+#matrix is for same data type , data frame can hold any data type
+myPlot <- function(data,rows=1:10){
+
+  Data <- data[rows,,drop=F]
+  matplot(t(Data),type ="b",pch=15:18, col=c(1:4,6))
+  legend("bottomleft",inset=0.01,pch=15:18, col=c(1:4,6),legend=Players[rows])
+
+}
