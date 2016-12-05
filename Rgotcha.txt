@@ -101,3 +101,23 @@ dataname$mynewcol <- vector or data frame
 
 # To get rid of column
 stats$xyz <- NULL
+
+
+#using filtered thing directly
+stats[stats$Birth.rate>40,]
+
+#to search a row by value of column name
+stats[stats$Country.Name == "Malta",]
+
+# to create data frame
+
+myDataFrame<- data.frame(Col1=vector1,col2=vector2 )
+
+#qplot
+qplot(data=stats, x=Internet.users,y=Birth.rate,size=I(4),color=Income.Group)
+
+#to merge the data frames by columns
+mergedDataFrame <- merge(stats,myDatFrame, by.x="Country.Code",by.y="Code")
+
+#with Title, transparency and size
+qplot(data=mergedDataFrame,x=Internet.users,y=Birth.rate,color=Region ,size=I(4),shape=I(17),main="Birth rate  vs Internet uses by Region")
