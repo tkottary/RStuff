@@ -121,3 +121,8 @@ mergedDataFrame <- merge(stats,myDatFrame, by.x="Country.Code",by.y="Code")
 
 #with Title, transparency and size
 qplot(data=mergedDataFrame,x=Internet.users,y=Birth.rate,color=Region ,size=I(4),shape=I(17),main="Birth rate  vs Internet uses by Region")
+
+
+
+#to convert any non factor column to factor
+dataset$columnName <- factor(dataset$columnname)
