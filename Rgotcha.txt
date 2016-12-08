@@ -109,7 +109,7 @@ stats[stats$Birth.rate>40,]
 #to search a row by value of column name
 stats[stats$Country.Name == "Malta",]
 
-# to create data frame
+# to create data frame with your own column name
 
 myDataFrame<- data.frame(Col1=vector1,col2=vector2 )
 
@@ -126,3 +126,130 @@ qplot(data=mergedDataFrame,x=Internet.users,y=Birth.rate,color=Region ,size=I(4)
 
 #to convert any non factor column to factor
 dataset$columnName <- factor(dataset$columnname)
+
+#using ggplot  with basic aesthetics.
+
+ggplot(data=movies,aes(x=CrticRating,y=AudienceRating,color=Genre,size=BudgetMillions)) +
+  geom_point()
+
+  #give name to above
+q + geom_point(aes(x=BudgetMillions)) + xlab("Budget in Millions")
+
+
+#add colour
+
+ggplot(data=movies,aes(x=CrticRating,y=AudienceRating,color=Genre)) +
+  geom_point()
+
+
+#add size
+
+ggplot(data=movies,aes(x=CrticRating,y=AudienceRating,color=Genre,size=BudgetMillions)) +
+  geom_point()
+
+#Using objects object
+
+q <-  ggplot(data=movies,aes(x=CrticRating,y=AudienceRating,color=Genre,size=BudgetMillions))
+q + geom_point()
+q + geom_point(aes(color=BudgetMillions))
+q + geom_point(aes(size=CrticRating))
+# changing the X  or Y
+q + geom_point(aes(x=BudgetMillions))
+#give name to above
+q + geom_point(aes(x=BudgetMillions)) + xlab("Budget in Millions")
+
+#reducing the line size
+q +geom_line(size=2)
+
+#changing colors
+#1  if usins color as column
+q+ geom_point(aes(color = Genre))
+
+#2 if using the actual color
+q + geom_point(color = "Red",size =3)
+#error
+q + geom_point(aes(size=1))
+q+  geom_point(size=10)
+
+#using histogram density and statistics
+s <- ggplot(data=movies, aes(x=BudgetMillions))
+s + geom_histogram(binwidth=15)
+
+# add a color
+s + geom_histogram(binwidth=15,aes(fill=Genre))
+
+# add a border
+s + geom_histogram(binwidth=15,aes(fill=Genre), color="Black")
+
+
+#density charts
+
+s + geom_density(aes(fill=Genre))
+s + geom_density(aes(fill=Genre),position = "stack")
+
+
+
+#using layers
+
+
+
+t <- ggplot(data=movies)
+t + geom_histogram(binwidth = 10,aes(x=CrticRating),fill="White", color="Blue")
+t + geom_histogram(binwidth = 10,aes(x=AudienceRating),fill="White", color="Blue")
+
+
+
+# Geom smooth
+
+
+u <- ggplot(data=movies,aes(x=CrticRating,y=AudienceRating, color=Genre))
+u+ geom_point()
+
+
+u + geom_point() + geom_smooth(fill=NA)
+
+
+#boxplots
+
+u<- ggplot(data=movies,aes(x=Genre,y=AudienceRating,color=Genre))
+
+u+ geom_boxplot()
+u+ geom_boxplot(size=1.2)
+u+ geom_boxplot(size=1.2) +geom_point()
+
+
+u+ geom_boxplot(size=1.2) +geom_jitter()
+
+u +geom_jitter() + geom_boxplot(size=1.2,alpha=0.3)
+
+
+#using factes
+#use scales to free the scale of axis
+
+n <- ggplot(data=movies , aes(x=CrticRating,y=AudienceRating,color=Genre))
+n + geom_point(size=3) +facet_grid(Genre~Year,scales="free")
+n + geom_point(aes(size=BudgetMillions)) +geom_smooth() +facet_grid(Genre~Year,scales="free")
+
+
+
+#To restrict the co ordinates
+
+n + geom_point(aes(size=BudgetMillions)) +geom_smooth() +facet_grid(Genre~Year,scales="free") +
+  coord_cartesian(xlim =c(0,100))
+
+
+
+#formatting using themes
+
+
+O <- ggplot(data=movies, aes(x=BudgetMillions))
+h <- O+ geom_histogram(binwidth = 10,aes(fill=Genre),color="Black")
+h +
+  xlab("Money Axis") +
+  ylab("Number of Movies") + ggtitle("Movie Budget Distribution")+
+  theme(axis.title.x = element_text(color="DarkGreen", size = 30),
+        axis.title.y = element_text(color="DarkGreen", size = 30),
+        axis.text.x =   element_text(size = 30),
+        axis.text.y =  element_text(size = 30),
+        plot.title =  element_text(color="DarkBlue",size =40 ,family="Courier")
+        )
